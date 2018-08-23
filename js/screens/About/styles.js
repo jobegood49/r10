@@ -2,34 +2,33 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   img: {
-    height: 60,
-    width: 250,
-    borderBottomWidth: 1
+    width: 200,
+    height: 75
   },
-  container: {
-    alignItems: "center"
+  logoWrap: {
+    alignItems: "center",
+    borderBottomColor: "black",
+    borderBottomWidth: 1,
+    paddingBottom: 30
   },
-  title: {
-    fontSize: 25,
-    fontWeight: "bold"
+  aboutContainer: {
+    padding: 10
   },
   description: {
-    fontSize: 20
-  },
-  codeHeader: {
-    fontFamily: "Montserrat-light",
-    color: "#9963ea",
-    marginLeft: 15,
-    fontSize: 14,
-    fontWeight: "bold"
+    marginTop: 10,
+    marginBottom: 10,
+    fontFamily: "Montserrat"
   },
   header: {
-      paddingBottom: 20,
-      textAlign: "left",
-      marginLeft: 15,
-      fontSize: 20,
-      fontFamily: 'Montserrat'
-
+    fontSize: 20,
+    fontFamily: "Montserrat",
+    marginBottom: 10
+  },
+  footer: {
+    borderTopColor: "black",
+    borderTopWidth: 1,
+    paddingTop: 20,
+    paddingBottom: 20
   }
 });
 

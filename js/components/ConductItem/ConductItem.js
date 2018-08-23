@@ -1,12 +1,41 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React, { Component } from "react";
+import { Text, View , TouchableOpacity} from "react-native";
 import styles from "./styles";
 
-const ConductItem = props => (
-  <View>
-    <Text>{props.conduct.title}</Text>
-    <Text>{props.conduct.description}</Text>
-  </View>
-);
+class ConductItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state= {
+      show: false
+    }
+  }
+
+  onPress = () => {
+    this.setState({
+      show: !this.state.show
+    })
+    console.log(this.state.show)
+  }
+
+  render() {
+    console.log('this is propsssssssssss',this.props)
+    return (
+      <View>
+        <TouchableOpacity
+         style={styles.button}
+         onPress={this.onPress}
+       >
+        <Text style={styles.conductTitle}>{`${this.state.show ? "-" : "+"} ${this.props.conduct.title}`}</Text>
+       </TouchableOpacity>
+       {
+         this.state.show &&(        <Text style={styles.conductDescription}>
+          {this.props.conduct.description}
+        </Text>) 
+       }
+
+      </View>
+    );
+  }
+}
 
 export default ConductItem;

@@ -12,14 +12,15 @@ import AboutScreen from "./screens/About";
 import RootStackNavigator from "./navigation/RootStackNavigation";
 import { ApolloProvider } from "react-apollo";
 import client from "./config/api";
-
-
+import { FavesProvider } from "./context/FavesContext";
 
 export default class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <RootStackNavigator />
+        <FavesProvider>
+          <RootStackNavigator />
+        </FavesProvider>
       </ApolloProvider>
       // <View style={styles.container}>
       //   <AboutScreen />
