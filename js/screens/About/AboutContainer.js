@@ -27,7 +27,6 @@ export default class componentName extends Component {
         `}
       >
         {({ loading, error, data }) => {
-          console.log(data);
 
           if (loading) return <Text>Loading...</Text>;
           if (error) return <Text>Error :(</Text>;

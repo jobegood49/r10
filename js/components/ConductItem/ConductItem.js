@@ -14,11 +14,9 @@ class ConductItem extends Component {
     this.setState({
       show: !this.state.show
     })
-    console.log(this.state.show)
   }
 
   render() {
-    console.log('this is propsssssssssss',this.props)
     return (
       <View>
         <TouchableOpacity
