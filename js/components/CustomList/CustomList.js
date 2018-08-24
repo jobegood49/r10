@@ -1,22 +1,32 @@
 import React from "react";
-import { Text, View, SectionList, StyleSheet } from "react-native";
+import { Text, View, SectionList, StyleSheet, Button } from "react-native";
 // import styles from "./styles";
 // import { readQueryFromStore } from "apollo-boost";
 
 //rncsl
-export default CustomList = ( {data} ) => {
+export default (CustomList = ({ data, navigation }) => {
   console.log("customlist", data);
   return (
-    <View >
-         <SectionList
-          sections={data}
-          renderItem={({item}) => <Text style={styles.item}>{item.title}</Text>}
-          renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-          keyExtractor={(item, index) => index}
-        />
+    <View>
+      <SectionList
+        sections={data}
+        renderItem={({ item }) => (
+          <View>
+            <Text style={styles.item}>{item.title}</Text>
+            <Button
+              title="Go to Session Page"
+              onPress={() => navigation.navigate("Session", { id: item.id })}
+            />
+          </View>
+        )}
+        renderSectionHeader={({ section }) => (
+          <Text style={styles.sectionHeader}>{section.title}</Text>
+        )}
+        keyExtractor={(item, index) => index}
+      />
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

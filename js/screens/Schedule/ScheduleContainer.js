@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Schedule from "./Schedule";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import {Text} from "react-native";
-import {formatSessionData} from "./dataFormatHelpers"
+import { View, Text } from "react-native";
+import { formatSessionData } from "./dataFormatHelpers";
 
 class ScheduleContainer extends Component {
   static navigationOptions = {
@@ -26,7 +26,7 @@ class ScheduleContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading...</Text>;
           if (error) return <Text>Error :(</Text>;
-          return <Schedule data={formatSessionData(data.allSessions)} />;
+          return <Schedule data={formatSessionData(data.allSessions)} navigation={this.props.navigation} />;
         }}
       </Query>
     );
