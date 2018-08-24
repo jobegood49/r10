@@ -1,8 +1,10 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-const Session = () => (
+const Session = ({data}) => (
+   
   <View>
+      { console.log(data)}
     <Text>This is the session component</Text>
   </View>
 );
