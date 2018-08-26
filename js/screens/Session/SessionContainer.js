@@ -13,8 +13,9 @@ const SESSION_QUERY = gql`
       location
       startTime
       speaker {
+        id
+        image
         name
-        bio
       }
     }
   }

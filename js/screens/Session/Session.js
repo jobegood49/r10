@@ -5,8 +5,10 @@ import { Text, View, Button, TouchableOpacity } from "react-native";
 const Session = ({ data, addFave, removeFave, nav }) => (
   //   <FavesContext.Consumer>
   <View>
-    {/* {console.log(data)}
-    {console.log(addFave)}
+    {console.log("data in session", data)}
+    {console.log("speaker data", data.speaker)}
+
+    {/* {console.log(addFave)}
     {console.log(removeFave)} */}
     <Text>{data.title}</Text>
     <Text>{data.location}</Text>
@@ -14,7 +16,7 @@ const Session = ({ data, addFave, removeFave, nav }) => (
     <TouchableOpacity
       onPress={() => {
         console.log("navigate to speaker");
-        nav.navigate("Speaker");
+        nav.navigate("Speaker", { id: data.speaker.id });
       }}
     >
       <Text>{data.speaker.name}</Text>
