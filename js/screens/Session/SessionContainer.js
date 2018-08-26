@@ -45,7 +45,7 @@ class SessionContainer extends Component {
             <FavesContext.Consumer>
               {values => {
                 // console.log("values in ctx", values.favesIds.map(el => {console.log(el)}));
-                return <Session data={data.Session}  addFave={values.addFave} removeFave={values.removeFave} />;
+                return <Session data={data.Session}  addFave={values.addFave} removeFave={values.removeFave} nav={this.props.navigation} />;
               }}
             </FavesContext.Consumer>
           );

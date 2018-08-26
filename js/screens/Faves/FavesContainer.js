@@ -20,9 +20,8 @@ class FavesContainer extends Component {
   static navigationOptions = {
     title: "Faves"
   };
-  sessionNav = id => {
-    this.props.navigation.navigate("Session", { id: id });
-  };
+  // sessionNav =  ;
+
 
   render() {
     return (
@@ -34,15 +33,18 @@ class FavesContainer extends Component {
             <FavesContext.Consumer>
               {values => {
                 console.log("on fave page", values.favesIds);
-                return <Faves data={allSessions} favesIds={values.favesIds} nav={id => this.sessionNav(id)} />;
+                return (
+                  <Faves
+                    data={allSessions}
+                    favesIds={values.favesIds}
+                    nav={this.props.navigation}
+                  />
+                );
               }}
             </FavesContext.Consumer>
           );
         }}
       </Query>
-      // <FavesContext.Consumer>
-
-      // </FavesContext.Consumer>
     );
   }
 }

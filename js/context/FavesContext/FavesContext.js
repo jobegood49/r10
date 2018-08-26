@@ -18,8 +18,6 @@ class FavesProvider extends Component {
 
   componentDidMount() {
     // console.log("yo");
-    this.removeFaveSession("5");
-    this.removeFaveSession("2");
     this.getFavedSessionsIds();
 
   }
