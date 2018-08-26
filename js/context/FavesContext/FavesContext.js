@@ -1,5 +1,10 @@
 import React, { Component, createContext } from "react";
-import { createFave, deleteFave, getFaves } from "../../config/models";
+import {
+  createFave,
+  deleteFave,
+  getFaves,
+  queryFaves
+} from "../../config/models";
 
 const FavesContext = createContext();
 
@@ -12,20 +17,35 @@ class FavesProvider extends Component {
   }
 
   componentDidMount() {
-    console.log("yo");
-    this.addFaveSession("5");
-    console.log(this.getFavedSessionsIds());
+    // console.log("yo");
+    this.removeFaveSession("5");
+    this.removeFaveSession("2");
+    this.getFavedSessionsIds();
+
   }
 
   getFavedSessionsIds = () => {
     try {
-      this.setState({ favesIds: getFaves() });
+      // const favesIds = [];
+      // getFaves().map(fave => {
+      //   faveIds.push(fave.id);
+      // });
+      // this.setState({ favesIds: favesIds });
+      // console.log("get faves", queryFaves())
+      // this.setState({ favesIds: getFaves() });
+      this.setState({ favesIds: queryFaves() });
+
+      console.log("new state", this.state.favesIds);
     } catch (error) {
       console.log(error);
     }
   };
 
   addFaveSession = sessionId => {
+    console.log(
+      "a fave was tempted to be added with the session id ",
+      sessionId
+    );
     try {
       createFave(sessionId);
       this.getFavedSessionsIds();
@@ -35,8 +55,12 @@ class FavesProvider extends Component {
   };
 
   removeFaveSession = sessionId => {
+    console.log(
+      "a fave was tempted to be deleted with the session id ",
+      sessionId
+    );
     try {
-      removeFave(sessionId);
+      deleteFave(sessionId);
       this.getFavedSessionsIds();
     } catch (error) {
       console.log(error);

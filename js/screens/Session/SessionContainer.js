@@ -3,6 +3,7 @@ import { Text } from "react-native";
 import Session from "./Session";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import FavesContext from "../../context/FavesContext";
 
 const SESSION_QUERY = gql`
   query Session($id: ID!) {
@@ -21,7 +22,7 @@ const SESSION_QUERY = gql`
 
 class SessionContainer extends Component {
   render() {
-    console.log(this.props.navigation.getParam("id"));
+    // console.log(this.props.navigation.getParam("id"));
     return (
       <Query
         // query={gql`
@@ -35,12 +36,19 @@ class SessionContainer extends Component {
         //   }
         // `}
         query={SESSION_QUERY}
-        variables={{id: this.props.navigation.getParam("id") }}
+        variables={{ id: this.props.navigation.getParam("id") }}
       >
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading...</Text>;
           if (error) return <Text>Error :(</Text>;
-          return <Session data={data.Session} />;
+          return (
+            <FavesContext.Consumer>
+              {values => {
+                // console.log("values in ctx", values.favesIds.map(el => {console.log(el)}));
+                return <Session data={data.Session}  addFave={values.addFave} removeFave={values.removeFave} />;
+              }}
+            </FavesContext.Consumer>
+          );
         }}
       </Query>
     );
