@@ -4,6 +4,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { View, Text } from "react-native";
 import { formatSessionData } from "./dataFormatHelpers";
+import FavesContext from "./../../context/FavesContext/";
 
 class ScheduleContainer extends Component {
   static navigationOptions = {
@@ -26,7 +27,20 @@ class ScheduleContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Text>Loading...</Text>;
           if (error) return <Text>Error :(</Text>;
-          return <Schedule data={formatSessionData(data.allSessions)} navigation={this.props.navigation} />;
+          return (
+            <FavesContext.Consumer>
+              {values => {
+                console.log("these are the faves ids",values.favesIds)
+                return (
+                  <Schedule
+                    data={formatSessionData(data.allSessions)}
+                    navigation={this.props.navigation}
+                    favesIds={values.favesIds}
+                  />
+                );
+              }}
+            </FavesContext.Consumer>
+          );
         }}
       </Query>
     );

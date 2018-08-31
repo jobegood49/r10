@@ -26,16 +26,6 @@ class SessionContainer extends Component {
     // console.log(this.props.navigation.getParam("id"));
     return (
       <Query
-        // query={gql`
-        //   {
-        //     Session(id: "cjh2jemtn167f0122t01busx0") {
-        //       location
-        //       description
-        //       startTime
-        //       title
-        //     }
-        //   }
-        // `}
         query={SESSION_QUERY}
         variables={{ id: this.props.navigation.getParam("id") }}
       >
@@ -46,7 +36,14 @@ class SessionContainer extends Component {
             <FavesContext.Consumer>
               {values => {
                 // console.log("values in ctx", values.favesIds.map(el => {console.log(el)}));
-                return <Session data={data.Session}  addFave={values.addFave} removeFave={values.removeFave} nav={this.props.navigation} />;
+                return (
+                  <Session
+                    data={data.Session}
+                    addFave={values.addFave}
+                    removeFave={values.removeFave}
+                    nav={this.props.navigation}
+                  />
+                );
               }}
             </FavesContext.Consumer>
           );

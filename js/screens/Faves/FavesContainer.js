@@ -20,8 +20,6 @@ class FavesContainer extends Component {
   static navigationOptions = {
     title: "Faves"
   };
-  // sessionNav =  ;
-
 
   render() {
     return (
@@ -32,7 +30,6 @@ class FavesContainer extends Component {
           return (
             <FavesContext.Consumer>
               {values => {
-                console.log("on fave page", values.favesIds);
                 return (
                   <Faves
                     data={allSessions}
