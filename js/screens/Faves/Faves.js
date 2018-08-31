@@ -11,7 +11,7 @@ const Faves = ({ data, favesIds, nav }) => {
   });
   return (
     <View>
-      <CustomList data={formatSessionData(favesData)} navigation={nav} />
+      <CustomList data={formatSessionData(favesData)} navigation={nav} favesIds={favesIds} />
       <Text>Faves page</Text>
     </View>
   );
