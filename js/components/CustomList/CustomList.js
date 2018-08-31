@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
 import {
   Text,
   View,
@@ -49,3 +51,17 @@ export default (CustomList = ({ data, navigation, favesIds }) => {
     </View>
   );
 });
+
+CustomList.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          location: PropTypes.string.isRequired,
+          id: PropTypes.string.isRequired
+        })
+      )
+    })
+  ).isRequired
+};
