@@ -12,6 +12,7 @@ const SESSION_QUERY = gql`
       title
       location
       startTime
+      description
       speaker {
         id
         image
@@ -42,6 +43,8 @@ class SessionContainer extends Component {
                     addFave={values.addFave}
                     removeFave={values.removeFave}
                     nav={this.props.navigation}
+                    favesIds={values.favesIds}
+                    sessionId={this.props.navigation.getParam("id")}
                   />
                 );
               }}
