@@ -35,14 +35,14 @@ const Session = ({ data, addFave, removeFave, nav, favesIds, sessionId }) => {
         <Text style={styles.subheading}>Presented By:</Text>
       </View>
       <View>
-        {console.log("data in session", data)}
+        {/* {console.log("data in session", data)}
         {console.log("speaker data image", data.speaker.image)}
         {console.log("speaker favesId", favesIds)}
-        {console.log("this is the sessionId", sessionId)}
+        {console.log("this is the sessionId", sessionId)} */}
 
         <TouchableOpacity
           onPress={() => {
-            console.log("navigate to speaker");
+            // console.log("navigate to speaker");
             nav.navigate("Speaker", { id: data.speaker.id });
           }}
         >
