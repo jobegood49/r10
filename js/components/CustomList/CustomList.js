@@ -8,17 +8,14 @@ import {
   TouchableOpacity,
   Platform
 } from "react-native";
+
+import Icon from "react-native-vector-icons/Ionicons";
 import { colors, typography } from "../../config/styles";
-// import Moment from 'moment';
 import { styles } from "./styles";
 
-// import styles from "./styles";
-// import { readQueryFromStore } from "apollo-boost";
-
-//rncsl
 export default (CustomList = ({ data, navigation, favesIds }) => {
   console.log("customlist", data);
-  console.log("custom list faves", favesIds )
+  console.log("custom list faves", favesIds);
   return (
     <View>
       <SectionList
@@ -27,9 +24,20 @@ export default (CustomList = ({ data, navigation, favesIds }) => {
           <TouchableOpacity
             onPress={() => navigation.navigate("Session", { id: item.id })}
           >
-            <View>
-              <Text style={styles.item}>{item.title}</Text>
+            <Text style={styles.item}>{item.title}</Text>
+
+            <View style={styles.itemContainer}>
               <Text style={styles.location}>{item.location}</Text>
+              {favesIds.includes(item.id) ? (
+                <Icon
+                  name={Platform.OS === "ios" ? "ios-heart" : "md-heart"}
+                  color="red"
+                  backgroundColor="transparent"
+                  size={14}
+                />
+              ) : (
+                <Text />
+              )}
             </View>
           </TouchableOpacity>
         )}

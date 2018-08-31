@@ -14,6 +14,7 @@ export default class componentName extends Component {
   };
 
   render() {
+    console.log('in the about page')
     return (
       <Query
         query={gql`
