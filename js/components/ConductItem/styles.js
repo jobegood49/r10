@@ -9,12 +9,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 10
 
-  },
-  conductDescription: {
-    marginBottom: 10,
-    fontSize: 14,
-    fontFamily: 'Montserrat-light'
   }
+  // ,
+  // conductDescription: {
+  //   marginBottom: 10,
+  //   fontSize: 14,
+  //   fontFamily: 'Montserrat-light'
+  // }
 });
 
 export default styles;
